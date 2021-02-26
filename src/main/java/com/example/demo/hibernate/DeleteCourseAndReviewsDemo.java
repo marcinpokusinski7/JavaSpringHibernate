@@ -27,7 +27,7 @@ public class DeleteCourseAndReviewsDemo {
             session.beginTransaction();
 
             // get the course
-            int theId = 10;
+            int theId = 12;
             Course tempCourse = session.get(Course.class, theId);
             // print the course
             System.out.println("Deleting the course: ");//lazy fetch only course

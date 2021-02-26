@@ -21,6 +21,7 @@ public class CreateInstructorDemo {
         // create session
         Session session = factory.getCurrentSession();
         try {
+
             // create object
 
             Instructor tempInstructor =
