@@ -38,7 +38,15 @@ public class Course {
         reviews.add(theReview);
     }
 
-    // define constructors
+    @ManyToMany(fetch=FetchType.LAZY,
+            cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+                    CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinTable(
+            name="course_student",
+            joinColumns=@JoinColumn(name="course_id"),
+            inverseJoinColumns=@JoinColumn(name="student_id")
+    )
+    private List<Student> students;
 
     public Course(String title) {
         this.title = title;
@@ -48,7 +56,14 @@ public class Course {
     // define to string // lombok
 
     // annotate fields
+    public void addStudent(Student theStudent) {
 
+        if (students == null) {
+            students = new ArrayList<>();
+        }
+
+        students.add(theStudent);
+    }
 
     @Override
     public String toString() {
